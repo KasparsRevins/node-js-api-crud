@@ -1,12 +1,12 @@
 const express = require('express');
-const pool = require('../db/config'); // Import the pool
+const pool = require('../db/config');
 
 const router_del = express.Router();
 router_del.delete('/delusers/:id', async (req, res) => {
     const { id } = req.params;
   
     try {
-      const deleteUserQuery = 'DELETE FROM tester WHERE id = $1'; // Using tester table
+      const deleteUserQuery = 'DELETE FROM tester WHERE id = $1';
       await pool.query(deleteUserQuery, [id]);
       res.status(200).json({ message: 'User deleted successfully' });
     } catch (error) {
